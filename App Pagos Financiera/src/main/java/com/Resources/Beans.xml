@@ -1,0 +1,92 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<beans xmlns="http://www.springframework.org/schema/beans"
+	xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+	xsi:schemaLocation="http://www.springframework.org/schema/beans http://www.springframework.org/schema/beans/spring-beans-4.2.xsd">
+
+	<bean id="client" class="com.Model.Client" scope="prototype">
+	</bean>
+	
+	<bean id="user" class="com.Model.User" scope="prototype">
+	</bean>
+	
+	<bean id="account" class="com.Model.Account" scope="prototype">
+	</bean>
+	
+	<bean id="administrative" class="com.Model.Administrative" scope="prototype">
+	</bean>
+	
+	<bean id="transaction" class="com.Model.Transaction" scope="prototype">
+	
+	</bean>
+	
+	<bean id="transactionspermonth" class="com.Model.TransactionsPerMonth">
+	</bean>
+	
+ 	<bean id="loan" class="com.Model.Loan" scope="prototype">
+	</bean>
+	
+	<bean id="city" class="com.Model.City" scope="prototype">
+	</bean>
+	
+	<!-- DAO -->
+
+	<bean id="AccountDaoImpl" class="com.Dao.AccountDaoImpl" 
+		destroy-method="Destroy">
+	</bean>
+
+	<bean id="AdministrativeDaoImpl"
+		class="com.Dao.AdministrativeDaoImpl">
+	</bean>
+
+	<bean id="ClientDaoImpl" class="com.Dao.ClientDaoImpl">
+	</bean>
+	
+	<bean id="LoanDaoImpl" class="com.Dao.LoanDaoImpl">
+	</bean>
+	
+	<bean id="LogInDaoImpl" class="com.Dao.LogInDaoImpl">
+	</bean>
+	
+	
+	<bean id="GenreDaoImpl" class="com.Dao.GenreDaoImpl">
+	</bean>
+	
+	<bean id="TransactionDaoImpl" class="com.Dao.TransactionDaoImpl">
+	</bean>
+	
+	<bean id="LocationDaoImpl" class="com.Dao.LocationDaoImpl">
+	</bean>
+	
+	<!--SERVICES -->
+	
+	<bean id="UserServiceImpl" class="com.Services.UserServiceImpl">
+	</bean>
+	
+	<bean id="ClientServiceImpl"
+		class="com.Services.ClientServiceImpl">
+		<constructor-arg name="dCli" ref="ClientDaoImpl" />
+	</bean>
+
+	<bean id="LocationServiceImpl"
+		class="com.Services.LocationServiceImpl">
+		<constructor-arg name="ldao" ref="LocationDaoImpl"></constructor-arg>
+	</bean>
+	
+	<bean id="LoanServiceImpl" class="com.Services.LoanServiceImpl">
+		<constructor-arg name="ldao" ref="LoanDaoImpl"></constructor-arg>
+	</bean>
+
+	<bean id="TransactionServiceImpl"
+		class="com.Services.TransactionServiceImpl">
+		<constructor-arg name="tdao" ref="TransactionDaoImpl"></constructor-arg>
+	</bean>
+
+	<bean id="AccountServiceImpl" class="com.Services.AccountServiceImpl">
+		<constructor-arg name="adao" ref="AccountDaoImpl"></constructor-arg>
+	</bean>
+
+	<bean id="GenreServiceImpl" class="com.Services.GenreServiceImpl">
+		<constructor-arg name="gdao" ref="GenreDaoImpl" />
+	</bean>
+
+</beans>
